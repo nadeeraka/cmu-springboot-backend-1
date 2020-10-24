@@ -20,9 +20,10 @@ CREATE TABLE "user"(
     password    TEXT  NOT NULL,
     age INTEGER NOT NULL ,
     is_male BOOLEAN NOT NULL ,
-    permission INTEGER DEFAULT 1 NOT NULL
+    is_staff  BOOLEAN DEFAULT false NOT NULL
 
 );
+
 CREATE TABLE  "test"(
      test_id INTEGER PRIMARY KEY  NOT NULL,
      user_id INTEGER NOT NULL,

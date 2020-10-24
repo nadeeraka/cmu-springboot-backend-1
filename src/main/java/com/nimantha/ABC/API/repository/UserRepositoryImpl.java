@@ -15,7 +15,7 @@ import java.sql.Statement;
 @Repository
 public class UserRepositoryImpl implements UserRepository {
 
-    private static final String SQL_CREATE = "INSERT INTO ET_USERS(USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD) VALUES(NEXTVAL('ET_USERS_SEQ'), ?, ?, ?, ?)";
+    private static final String SQL_CREATE = "INSERT INTO ET_USERS(USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD, AGE, IS_STAFF) VALUES(NEXTVAL('ET_USERS_SEQ'), ?, ?, ?, ?,?,?)";
     private static final String SQL_COUNT_BY_EMAIL = "SELECT COUNT(*) FROM ET_USERS WHERE EMAIL = ?";
     private static final String SQL_FIND_BY_ID = "SELECT USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD " +
             "FROM ET_USERS WHERE USER_ID = ?";
@@ -26,7 +26,7 @@ public class UserRepositoryImpl implements UserRepository {
     JdbcTemplate jdbcTemplate;
 
     @Override
-    public Integer create(String firstName, String lastName, String email, String password, Integer age, Integer permission) {
+    public Integer create(String firstName, String lastName, String email, String password, Integer age, Boolean is_staff) {
         try {
             KeyHolder keyHolder = new GeneratedKeyHolder();
             jdbcTemplate.update(connection -> {
@@ -35,6 +35,8 @@ public class UserRepositoryImpl implements UserRepository {
                 ps.setString(2, lastName);
                 ps.setString(3, email);
                 ps.setString(4, password);
+                ps.setInt(5, age);
+                ps.setBoolean(6, is_staff);
                 return ps;
             }, keyHolder);
             return (Integer) keyHolder.getKeys().get("USER_ID");
@@ -42,11 +44,6 @@ public class UserRepositoryImpl implements UserRepository {
             throw new AuthException("Invalid details. Failed to create account");
         }
     }
-
-//    @Override
-//    public Integer create(String firstName, String lastName, String email, String password, Integer age, Integer permission) {
-//        return null;
-//    }
 
 
     @Override
@@ -71,12 +68,8 @@ public class UserRepositoryImpl implements UserRepository {
                 rs.getString("EMAIL"),
                 rs.getString("PASSWORD"),
                 rs.getInt("AGE"),
-                rs.getInt("PERMISSION"));
+                rs.getBoolean("IS_STAFF"));
     });
 
-//    @Override
-//    public Integer create(String firstName, String lastName, String email, String password, Object age, Object permission) {
-//        return null;
-//    }
 
 }
