@@ -5,15 +5,13 @@ import com.nimantha.ABC.API.exceptions.AuthException;
 
 public interface UserRepository {
 
-    int createUser(String firstName,String lastName,String email, String password,int age, int permission) throws AuthException;
-
-    int findByEmail (String email) throws AuthException;
+    Integer create(String firstName, String lastName, String email, String password,Integer age,Boolean is_staff);
 
     User findByEmailAndPassword(String email, String password) throws AuthException;
 
-    int findById(int id) throws AuthException;
+    Integer getCountByEmail(String email);
 
+    User findById(Integer userId);
 
-
-
+//    Integer create(String firstName, String lastName, String email, String password, Object age, Object permission);
 }

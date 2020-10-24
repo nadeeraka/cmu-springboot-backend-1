@@ -7,19 +7,25 @@ public class User {
     private String lastName;
     private String email;
     private int age;
-    private int permission;
+    private boolean is_staff;
     private String password;
 
+    public boolean isIs_staff() {
+        return is_staff;
+    }
 
+    public void setIs_staff(boolean is_staff) {
+        this.is_staff = is_staff;
+    }
 
-    public User(Integer userId, String firstName, String lastName, String email, String password, int age, int permission) {
+    public User(Integer userId, String firstName, String lastName, String email, String password, int age, boolean is_staff) {
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.age = age;
-        this.permission = permission;
+        this.is_staff = is_staff;
 
     }
 
@@ -31,13 +37,7 @@ public class User {
         this.age = age;
     }
 
-    public int getPermission() {
-        return permission;
-    }
 
-    public void setPermission(int permission) {
-        this.permission = permission;
-    }
 
     public Integer getUserId() {
         return userId;
