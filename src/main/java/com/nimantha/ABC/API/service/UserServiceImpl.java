@@ -32,7 +32,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User registerUser(String firstName, String lastName, String email, String password) throws AuthException {
+    public User registerUser(String firstName, String lastName, String email, String password, int age,int permisson) throws AuthException {
         return null;
     }
 }
