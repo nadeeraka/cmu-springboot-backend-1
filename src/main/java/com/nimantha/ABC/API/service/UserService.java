@@ -8,6 +8,6 @@ public interface UserService {
 
     User validateUser(String email, String password) throws AuthException;
 
-    User registerUser(String firstName, String lastName, String email, String password,int age,int permission) throws AuthException;
+    User registerUser(String firstName, String lastName, String email, String password,Integer age,Boolean is_staff) throws AuthException;
 
 }
