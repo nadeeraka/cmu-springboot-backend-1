@@ -4,6 +4,7 @@ import com.nimantha.ABC.API.domain.User;
 import com.nimantha.ABC.API.exceptions.AuthException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 @Repository
-public class UserRepositoryImpl implements  UserRepository{
+public class UserRepositoryImpl implements UserRepository {
 
     private static final String SQL_CREATE = "INSERT INTO ET_USERS(USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD) VALUES(NEXTVAL('ET_USERS_SEQ'), ?, ?, ?, ?)";
     private static final String SQL_COUNT_BY_EMAIL = "SELECT COUNT(*) FROM ET_USERS WHERE EMAIL = ?";
@@ -23,6 +24,7 @@ public class UserRepositoryImpl implements  UserRepository{
 
     @Autowired
     JdbcTemplate jdbcTemplate;
+
     @Override
     public Integer create(String firstName, String lastName, String email, String password, Integer age, Integer permission) {
         try {
@@ -36,7 +38,7 @@ public class UserRepositoryImpl implements  UserRepository{
                 return ps;
             }, keyHolder);
             return (Integer) keyHolder.getKeys().get("USER_ID");
-        }catch (Exception e) {
+        } catch (Exception e) {
             throw new AuthException("Invalid details. Failed to create account");
         }
     }
@@ -54,13 +56,23 @@ public class UserRepositoryImpl implements  UserRepository{
 
     @Override
     public Integer getCountByEmail(String email) {
-        return null;
+        return jdbcTemplate.queryForObject(SQL_COUNT_BY_EMAIL, new Object[]{email}, Integer.class);
     }
 
     @Override
     public User findById(Integer userId) {
-        return null;
+        return jdbcTemplate.queryForObject(SQL_FIND_BY_ID, new Object[]{userId}, userRowMapper);
     }
+
+    private RowMapper<User> userRowMapper = ((rs, rowNum) -> {
+        return new User(rs.getInt("USER_ID"),
+                rs.getString("FIRST_NAME"),
+                rs.getString("LAST_NAME"),
+                rs.getString("EMAIL"),
+                rs.getString("PASSWORD"),
+                rs.getInt("AGE"),
+                rs.getInt("PERMISSION"));
+    });
 
 //    @Override
 //    public Integer create(String firstName, String lastName, String email, String password, Object age, Object permission) {
