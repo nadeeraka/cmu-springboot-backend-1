@@ -19,9 +19,7 @@ CREATE TABLE "user"(
     email VARCHAR(30) NOT NULL ,
     password    TEXT  NOT NULL,
     age INTEGER NOT NULL ,
-    is_male BOOLEAN NOT NULL ,
     is_staff  BOOLEAN DEFAULT false NOT NULL
-
 );
 
 CREATE TABLE  "test"(

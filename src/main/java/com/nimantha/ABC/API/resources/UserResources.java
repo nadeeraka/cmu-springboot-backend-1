@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.http.ResponseEntity;
 
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,15 +20,28 @@ public class UserResources {
     @Autowired
     UserService userService;
 
+    @PostMapping("/login")
+    public ResponseEntity<Map<String, String>> loginUser(@RequestBody Map<String, Object> userMap) {
+        String email = (String) userMap.get("email");
+        String password = (String) userMap.get("password");
+        User user = userService.validateUser(email, password);
+        Map<String, String> map = new HashMap<>();
+        map.put("massage","created");
+//        User user = userService.validateUser(email, password);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+//        return new ResponseEntity<>(generateJWTToken(user), HttpStatus.OK);
+    }
+
+
     @PostMapping("/register")
     public ResponseEntity<Map<String, String>>  register(@RequestBody Map<String, Object> userMap ){
         String firstName = (String) userMap.get("firstName");
         String lastName = (String) userMap.get("lastName");
         String email = (String) userMap.get("email");
         String password = (String) userMap.get("password");
-        int age = (Integer) userMap.get("age");
-        int permission= (Integer) userMap.get("permission");
-        User user = userService.registerUser(firstName, lastName, email, password,age,permission);
+        Integer age = (Integer) userMap.get("age");
+        Boolean is_staff= (Boolean) userMap.get("is_staff");
+        User user = userService.registerUser(firstName, lastName, email, password,age,is_staff);
         Map<String, String> map = new HashMap<>();
         map.put("massage","created");
 //        User user = userService.validateUser(email, password);
