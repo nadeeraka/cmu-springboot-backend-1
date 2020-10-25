@@ -12,11 +12,12 @@ public interface TestRepository {
 
     Test findById(Integer testId, Integer userId) throws ResourceNotFoundException;
 
-    Test create(Integer userId, Boolean isUrgent, String description,
-                 String testResult, Boolean isProgress, Boolean isFinished, Date TestCreatedTime) throws BadRequestException;
+    int create(Integer userId, Boolean isUrgent, String description,
+                 String testResult, Boolean isProgress, Boolean isFinished) throws BadRequestException;
 
     void update(Integer testId, Integer userId, Test UpdatedTest) throws BadRequestException;
 
     void remove(Integer testId, Integer userId) throws BadRequestException;
 
+//    Integer create(Integer userId, Boolean isUrgent, String description, String testResult, Boolean isProgress, Boolean isFinished);
 }

@@ -11,9 +11,9 @@ public class Test {
     private String testResult;
     private Boolean isProgress;
     private Boolean isFinished;
-    private Date TestCreatedTime;
 
-    public Test(Integer id, Integer userId, Boolean isUrgent, String description, String testResult, Boolean isProgress, Boolean isFinished, Date testCreatedTime) {
+
+    public Test(Integer id, Integer userId, Boolean isUrgent, String description, String testResult, Boolean isProgress, Boolean isFinished) {
         this.id = id;
         this.userId = userId;
         this.isUrgent = isUrgent;
@@ -21,7 +21,7 @@ public class Test {
         this.testResult = testResult;
         this.isProgress = isProgress;
         this.isFinished = isFinished;
-        TestCreatedTime = testCreatedTime;
+
     }
 
     public Integer getId() {
@@ -80,11 +80,5 @@ public class Test {
         isFinished = finished;
     }
 
-    public Date getTestCreatedTime() {
-        return TestCreatedTime;
-    }
 
-    public void setTestCreatedTime(Date testCreatedTime) {
-        TestCreatedTime = testCreatedTime;
-    }
 }

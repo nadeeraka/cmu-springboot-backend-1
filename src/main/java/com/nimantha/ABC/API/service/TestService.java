@@ -15,7 +15,7 @@ public interface TestService {
     Test fetchTestById(Integer testId, Integer userId) throws ResourceNotFoundException;
 
     Test addTest(Integer userId, Boolean isUrgent, String description,
-                 String testResult, Boolean isProgress, Boolean isFinished, Date TestCreatedTime) throws BadRequestException;
+                 String testResult, Boolean isProgress, Boolean isFinished) throws BadRequestException;
 
     void updateTest(Integer testId, Integer userId, Test UpdatedTest) throws BadRequestException;
 

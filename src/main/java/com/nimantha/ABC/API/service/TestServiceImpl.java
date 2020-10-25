@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Date;
 import java.util.List;
 @Service
 @Transactional
@@ -28,8 +27,8 @@ public class TestServiceImpl  implements  TestService{
     }
 
     @Override
-    public Test addTest(Integer userId, Boolean isUrgent, String description, String testResult, Boolean isProgress, Boolean isFinished, Date TestCreatedTime) throws BadRequestException {
-        Integer testId = testRepository.create(userId,  isUrgent, description,testResult,isProgress, isFinished, TestCreatedTime);
+    public Test addTest(Integer userId, Boolean isUrgent, String description, String testResult, Boolean isProgress, Boolean isFinished) throws BadRequestException {
+        Integer testId = testRepository.create(userId,  isUrgent, description,testResult,isProgress, isFinished);
         return testRepository.findById(userId,testId);
     }
 
