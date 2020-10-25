@@ -18,7 +18,7 @@ public class TestServiceImpl  implements  TestService{
 
     @Override
     public List<Test> fetchAllTest(Integer userId) {
-        return null;
+       return testRepository.fetchAllTest(userId);
     }
 
     @Override

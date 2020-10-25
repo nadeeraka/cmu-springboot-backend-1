@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -16,6 +17,14 @@ import java.util.Map;
 public class TestResource {
     @Autowired
     TestService testService;
+
+    @GetMapping("")
+    public ResponseEntity<List<Test>> getAllTest(HttpServletRequest request) {
+        int userId = (Integer) request.getAttribute("userId");
+        List<Test> test = testService.fetchAllTest(userId);
+        return new ResponseEntity<>(test, HttpStatus.OK);
+    }
+
 
     @GetMapping("/{testId}")
     public ResponseEntity<Test> getTestById(HttpServletRequest request, @PathVariable("testId") Integer testId) {
