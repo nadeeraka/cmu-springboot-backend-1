@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,4 +53,15 @@ public class TestResource {
         Test test = testService.fetchTestById(testId,userId);
         return new ResponseEntity<>(test, HttpStatus.OK);
     }
+    @PutMapping("/{testId}")
+    public ResponseEntity<Map<String, Boolean>> updateTest(HttpServletRequest request,
+                                                               @PathVariable("categoryId") Integer testId,
+                                                               @RequestBody Test test) {
+        int userId = (Integer) request.getAttribute("userId");
+        testService.updateTest(testId,userId,test);
+        Map<String, Boolean> map = new HashMap<>();
+        map.put("success", true);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
 }

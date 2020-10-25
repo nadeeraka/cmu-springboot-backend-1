@@ -36,7 +36,7 @@ public class TestRepositoryImpl implements TestRepository {
 
     @Override
     public List<Test> fetchAllTest(Integer userId) {
-        return null;
+        return jdbcTemplate.query(SQL_FIND_ALL, new Object[]{userId}, testRowMapper);
     }
 
     @Override
