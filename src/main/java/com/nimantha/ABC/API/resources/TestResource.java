@@ -55,10 +55,19 @@ public class TestResource {
     }
     @PutMapping("/{testId}")
     public ResponseEntity<Map<String, Boolean>> updateTest(HttpServletRequest request,
-                                                               @PathVariable("categoryId") Integer testId,
+                                                               @PathVariable("testId") Integer testId,
                                                                @RequestBody Test test) {
         int userId = (Integer) request.getAttribute("userId");
         testService.updateTest(testId,userId,test);
+        Map<String, Boolean> map = new HashMap<>();
+        map.put("success", true);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+    @DeleteMapping("/{testId}")
+    public ResponseEntity<Map<String, Boolean>> deleteTest(HttpServletRequest request,
+                                                               @PathVariable("testId") Integer testId) {
+        int userId = (Integer) request.getAttribute("userId");
+      testService.removeTestWithCascade(testId,userId);
         Map<String, Boolean> map = new HashMap<>();
         map.put("success", true);
         return new ResponseEntity<>(map, HttpStatus.OK);

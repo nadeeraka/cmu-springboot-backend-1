@@ -81,9 +81,8 @@ public class TestRepositoryImpl implements TestRepository {
 
     @Override
     public void remove(Integer testId, Integer userId) throws BadRequestException {
-//        this.remove(testId);
-//        this.remove();
-//        jdbcTemplate.update(SQL_DELETE_CATEGORY, new Object[]{userId, categoryId});
+        this.remove(testId,userId);
+       jdbcTemplate.update(SQL_DELETE_TEST, new Object[]{userId, testId});
     }
 
     private RowMapper<Test> testRowMapper = ((rs, rowNum) -> {
