@@ -4,31 +4,28 @@ import java.util.Date;
 
 public class Appointment {
 
-    private  Integer id;
-    private Integer userId;
-
-    public Appointment(Integer id, Integer userId, Boolean isUrgent, String description, String testResult, Boolean isProgress, Boolean isFinished, Date testCreatedTime) {
-        this.id = id;
-        this.userId = userId;
-        this.isUrgent = isUrgent;
-        this.description = description;
-        this.testResult = testResult;
-        this.isProgress = isProgress;
-        this.isFinished = isFinished;
-        TestCreatedTime = testCreatedTime;
-    }
-
-    private Boolean isUrgent;
+    private Integer  appointmentId;
+    private Integer  userId;
+    private Integer  testId;
     private String description;
-    private String testResult;
-    private Boolean isProgress;
+    private Date appointmentTime;
+    private Date nextAppointment;
 
-    public Integer getId() {
-        return id;
+    public Appointment(Integer appointmentId, Integer userId, Integer testId, String description, Date appointmentTime, Date nextAppointment) {
+        this.appointmentId = appointmentId;
+        this.userId = userId;
+        this.testId = testId;
+        this.description = description;
+        this.appointmentTime = appointmentTime;
+        this.nextAppointment = nextAppointment;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Integer getAppointmentId() {
+        return appointmentId;
+    }
+
+    public void setAppointmentId(Integer appointmentId) {
+        this.appointmentId = appointmentId;
     }
 
     public Integer getUserId() {
@@ -39,12 +36,12 @@ public class Appointment {
         this.userId = userId;
     }
 
-    public Boolean getUrgent() {
-        return isUrgent;
+    public Integer getTestId() {
+        return testId;
     }
 
-    public void setUrgent(Boolean urgent) {
-        isUrgent = urgent;
+    public void setTestId(Integer testId) {
+        this.testId = testId;
     }
 
     public String getDescription() {
@@ -55,38 +52,19 @@ public class Appointment {
         this.description = description;
     }
 
-    public String getTestResult() {
-        return testResult;
+    public Date getAppointmentTime() {
+        return appointmentTime;
     }
 
-    public void setTestResult(String testResult) {
-        this.testResult = testResult;
+    public void setAppointmentTime(Date appointmentTime) {
+        this.appointmentTime = appointmentTime;
     }
 
-    public Boolean getProgress() {
-        return isProgress;
+    public Date getNextAppointment() {
+        return nextAppointment;
     }
 
-    public void setProgress(Boolean progress) {
-        isProgress = progress;
+    public void setNextAppointment(Date nextAppointment) {
+        this.nextAppointment = nextAppointment;
     }
-
-    public Boolean getFinished() {
-        return isFinished;
-    }
-
-    public void setFinished(Boolean finished) {
-        isFinished = finished;
-    }
-
-    public Date getTestCreatedTime() {
-        return TestCreatedTime;
-    }
-
-    public void setTestCreatedTime(Date testCreatedTime) {
-        TestCreatedTime = testCreatedTime;
-    }
-
-    private Boolean isFinished;
-    private Date TestCreatedTime;
 }
