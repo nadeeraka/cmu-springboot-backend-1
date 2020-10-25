@@ -19,7 +19,7 @@ public interface TestService {
 
     void updateTest(Integer testId, Integer userId, Test UpdatedTest) throws BadRequestException;
 
-    void removeTestWithCascade(Integer testId, Integer userId);
+    void removeTestWithCascade(Integer testId, Integer userId) throws BadRequestException;
 
 
 
