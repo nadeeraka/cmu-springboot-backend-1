@@ -27,6 +27,7 @@ public class UserRepositoryImpl implements UserRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+
     @Override
     public Integer create(String firstName, String lastName, String email, String password, Integer age, Boolean is_staff) {
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt(10));
