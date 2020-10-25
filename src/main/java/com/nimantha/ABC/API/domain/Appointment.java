@@ -1,5 +1,6 @@
 package com.nimantha.ABC.API.domain;
 
+import javax.xml.crypto.Data;
 import java.util.Date;
 
 public class Appointment {
@@ -8,16 +9,16 @@ public class Appointment {
     private Integer  userId;
     private Integer  testId;
     private String description;
-    private Date appointmentTime;
-    private Date nextAppointment;
+    private Data appointmentTime;
 
-    public Appointment(Integer appointmentId, Integer userId, Integer testId, String description, Date appointmentTime, Date nextAppointment) {
+
+    public Appointment(Integer appointmentId, Integer userId, Integer testId, String description, Date appointmentTime) {
         this.appointmentId = appointmentId;
         this.userId = userId;
         this.testId = testId;
         this.description = description;
-        this.appointmentTime = appointmentTime;
-        this.nextAppointment = nextAppointment;
+        this.appointmentTime = (Data) appointmentTime;
+
     }
 
     public Integer getAppointmentId() {
@@ -53,18 +54,12 @@ public class Appointment {
     }
 
     public Date getAppointmentTime() {
-        return appointmentTime;
+        return (Date) appointmentTime;
     }
 
     public void setAppointmentTime(Date appointmentTime) {
-        this.appointmentTime = appointmentTime;
+        this.appointmentTime = (Data) appointmentTime;
     }
 
-    public Date getNextAppointment() {
-        return nextAppointment;
-    }
 
-    public void setNextAppointment(Date nextAppointment) {
-        this.nextAppointment = nextAppointment;
     }
-}
