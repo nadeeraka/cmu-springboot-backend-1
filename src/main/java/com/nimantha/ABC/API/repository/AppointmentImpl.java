@@ -1,5 +1,6 @@
 package com.nimantha.ABC.API.repository;
 
+import com.nimantha.ABC.API.domain.Appointment;
 import com.nimantha.ABC.API.domain.Test;
 import com.nimantha.ABC.API.exceptions.BadRequestException;
 import com.nimantha.ABC.API.exceptions.ResourceNotFoundException;
@@ -9,12 +10,12 @@ import java.util.List;
 
 public class AppointmentImpl implements AppointmentRepository {
     @Override
-    public List<Test> fetchAllTest(Integer userId) {
+    public List<Appointment> fetchAll(Integer userId) {
         return null;
     }
 
     @Override
-    public Test findById(Integer appId, Integer userId) throws ResourceNotFoundException {
+    public Appointment findById(Integer appId, Integer userId) throws ResourceNotFoundException {
         return null;
     }
 
