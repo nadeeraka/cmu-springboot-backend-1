@@ -23,7 +23,7 @@ public class TestServiceImpl  implements  TestService{
 
     @Override
     public Test fetchTestById(Integer testId, Integer userId) throws ResourceNotFoundException {
-        return null;
+        return testRepository.findById(testId,userId);
     }
 
     @Override

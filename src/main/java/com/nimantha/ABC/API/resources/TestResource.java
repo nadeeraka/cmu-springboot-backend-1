@@ -36,4 +36,11 @@ public class TestResource {
         Test test = testService.addTest(userId,isUrgent, description,testResult,isProgress,isFinished );
         return new ResponseEntity<>(test, HttpStatus.CREATED);
     }
+    @GetMapping("/{testId}")
+    public ResponseEntity<Test> getTestyById(HttpServletRequest request,
+                                                    @PathVariable("testId") Integer testId) {
+        int userId = (Integer) request.getAttribute("userId");
+        Test test = testService.fetchTestById(testId,userId);
+        return new ResponseEntity<>(test, HttpStatus.OK);
+    }
 }
