@@ -5,28 +5,28 @@ import java.util.Date;
 
 public class Appointment {
 
-    private Integer  appointmentId;
+    private Integer  appId;
     private Integer  userId;
     private Integer  testId;
     private String description;
-    private Data appointmentTime;
+    private Data appTime;
 
 
-    public Appointment(Integer appointmentId, Integer userId, Integer testId, String description, Date appointmentTime) {
-        this.appointmentId = appointmentId;
+    public Appointment(Integer appId, Integer userId, Integer testId, String description, Date appTime) {
+        this.appId = appId;
         this.userId = userId;
         this.testId = testId;
         this.description = description;
-        this.appointmentTime = (Data) appointmentTime;
+        this.appTime = (Data) appTime;
 
     }
 
-    public Integer getAppointmentId() {
-        return appointmentId;
+    public Integer getAppId() {
+        return appId;
     }
 
-    public void setAppointmentId(Integer appointmentId) {
-        this.appointmentId = appointmentId;
+    public void setAppId(Integer appointmentId) {
+        this.appId = appId;
     }
 
     public Integer getUserId() {
@@ -53,12 +53,12 @@ public class Appointment {
         this.description = description;
     }
 
-    public Date getAppointmentTime() {
-        return (Date) appointmentTime;
+    public Date getAppTime() {
+        return (Date) appTime;
     }
 
-    public void setAppointmentTime(Date appointmentTime) {
-        this.appointmentTime = (Data) appointmentTime;
+    public void setAppTime(Date appointmentTime) {
+        this.appTime = (Data) appointmentTime;
     }
 
 
