@@ -18,12 +18,12 @@ public class TestServiceImpl  implements  TestService{
 
     @Override
     public List<Test> fetchAllTest(Integer userId) {
-       return testRepository.fetchAllTest(userId);
+        return null;
     }
 
     @Override
     public Test fetchTestById(Integer testId, Integer userId) throws ResourceNotFoundException {
-        return testRepository.findById(testId,userId);
+        return null;
     }
 
     @Override

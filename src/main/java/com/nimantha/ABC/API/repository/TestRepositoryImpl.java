@@ -36,7 +36,7 @@ public class TestRepositoryImpl implements TestRepository {
 
     @Override
     public List<Test> fetchAllTest(Integer userId) {
-        return jdbcTemplate.query(SQL_FIND_ALL, new Object[]{userId}, testRowMapper);
+        return null;
     }
 
     @Override
@@ -81,8 +81,9 @@ public class TestRepositoryImpl implements TestRepository {
 
     @Override
     public void remove(Integer testId, Integer userId) throws BadRequestException {
-        this.remove(testId,userId);
-       jdbcTemplate.update(SQL_DELETE_TEST, new Object[]{userId, testId});
+//        this.remove(testId);
+//        this.remove();
+//        jdbcTemplate.update(SQL_DELETE_CATEGORY, new Object[]{userId, categoryId});
     }
 
     private RowMapper<Test> testRowMapper = ((rs, rowNum) -> {
