@@ -44,10 +44,19 @@ public class AppointmentResource {
         return new ResponseEntity(app, HttpStatus.CREATED);
     }
 
-
+    @PutMapping("/{id}")
+    public ResponseEntity<Map<String, Boolean>> updateTransaction(HttpServletRequest request, @PathVariable("userId") Integer appId,
+                                                                  @PathVariable("testId") Integer testId,
+                                                                  @RequestBody Appointment appointment) {
+        int userId = (Integer) request.getAttribute("userId");
+        appointmentService.appUpdate(userId, appId, appointment);
+        Map<String, Boolean> map = new HashMap<>();
+        map.put("success", true);
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
 
     @DeleteMapping("/id}")
-    public ResponseEntity<Map<String, Boolean>> deleteAppointment(HttpServletRequest request,@PathVariable("id") Integer appId) {
+    public ResponseEntity<Map<String, Boolean>> deleteAppointment(HttpServletRequest request, @PathVariable("id") Integer appId) {
         int userId = (Integer) request.getAttribute("userId");
         appointmentService.appRemove(appId, userId);
         Map<String, Boolean> map = new HashMap<>();

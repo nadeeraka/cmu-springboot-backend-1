@@ -38,8 +38,8 @@ public class AppointmentServiceImpl implements AppointmentService {
     }
 
     @Override
-    public void appUpdate(Integer appId, Integer userId, Test UpdatedTest) throws BadRequestException {
-        appointmentRepository.update(appId, userId, UpdatedTest);
+    public void appUpdate(Integer appId, Integer userId, Appointment appointment) throws BadRequestException {
+        appointmentRepository.update(appId, userId, appointment);
 
     }
 

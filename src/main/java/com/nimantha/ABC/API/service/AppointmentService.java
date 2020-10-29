@@ -16,7 +16,7 @@ public interface AppointmentService {
 
     int appCreate(Integer userId,Integer testId,String description, Date appointmentTime)throws BadRequestException;
 
-    void appUpdate(Integer appId, Integer userId, Test UpdatedTest) throws BadRequestException;
+    void appUpdate(Integer appId, Integer userId, Appointment appointment) throws BadRequestException;
 
     void appRemove(Integer appId, Integer userId) throws BadRequestException;
 }
