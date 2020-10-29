@@ -6,6 +6,7 @@ import com.nimantha.ABC.API.exceptions.BadRequestException;
 import com.nimantha.ABC.API.exceptions.ResourceNotFoundException;
 
 import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
 public interface AppointmentService {
@@ -13,7 +14,7 @@ public interface AppointmentService {
 
     Appointment appFindById(Integer appId, Integer userId) throws ResourceNotFoundException;
 
-    int appCreate(Integer userId,Integer testId,String description, Data appointmentTime)throws BadRequestException;
+    int appCreate(Integer userId,Integer testId,String description, Date appointmentTime)throws BadRequestException;
 
     void appUpdate(Integer appId, Integer userId, Test UpdatedTest) throws BadRequestException;
 

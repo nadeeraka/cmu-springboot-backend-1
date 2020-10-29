@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,9 +30,10 @@ public class AppointmentServiceImpl implements AppointmentService {
         return appointmentRepository.findById(appId, userId);
     }
 
+//
     @Override
-    public int appCreate(Integer userId, Integer testId, String description, Data appointmentTime) throws BadRequestException {
-        int appId = appointmentRepository.create(userId, testId, description, appointmentTime);
+    public int appCreate(Integer userId, Integer testId, String description,  Date appointmentTime) throws BadRequestException {
+        int appId = appointmentRepository.create(userId, testId, description, (Data) appointmentTime);
         return appId;
     }
 
