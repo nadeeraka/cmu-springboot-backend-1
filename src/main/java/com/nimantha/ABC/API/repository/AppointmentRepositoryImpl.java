@@ -7,10 +7,11 @@ import com.nimantha.ABC.API.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Repository;
 
 import javax.xml.crypto.Data;
 import java.util.List;
-
+@Repository
 public class AppointmentRepositoryImpl implements AppointmentRepository {
     @Autowired
     JdbcTemplate jdbcTemplate;
