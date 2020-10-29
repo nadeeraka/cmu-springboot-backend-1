@@ -22,7 +22,7 @@ public class UserRepositoryImpl implements UserRepository {
     private static final String SQL_FIND_BY_ID = "SELECT USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD " +
             "FROM USER WHERE USER_ID = ?";
     private static final String SQL_FIND_BY_EMAIL = "SELECT USER_ID, FIRST_NAME, LAST_NAME, EMAIL, PASSWORD " +
-            "FROM USERS WHERE EMAIL = ?";
+            "FROM USER WHERE EMAIL = ?";
 
     @Autowired
     JdbcTemplate jdbcTemplate;
