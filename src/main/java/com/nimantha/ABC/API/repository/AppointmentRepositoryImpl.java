@@ -1,7 +1,6 @@
 package com.nimantha.ABC.API.repository;
 
 import com.nimantha.ABC.API.domain.Appointment;
-import com.nimantha.ABC.API.domain.Test;
 import com.nimantha.ABC.API.exceptions.BadRequestException;
 import com.nimantha.ABC.API.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,9 +70,9 @@ public class AppointmentRepositoryImpl implements AppointmentRepository {
     }
 
     @Override
-    public void update(Integer appId, Integer userId, Test UpdatedTest) throws BadRequestException {
+    public void update(Integer appId, Integer userId, Appointment appointment) throws BadRequestException {
         try {
-            jdbcTemplate.update(SQL_UPDATE, UpdatedTest.getDescription(),UpdatedTest.getFinished(), UpdatedTest.getUrgent(),UpdatedTest.getTestResult(),appId,userId);
+            jdbcTemplate.update(SQL_UPDATE, appointment.getDescription(), appointment.getTestId(),appId,userId);
         }catch (Exception e) {
             throw new BadRequestException("Invalid request");
         }
