@@ -25,6 +25,7 @@ CREATE TABLE "user"(
 CREATE TABLE  "test"(
      test_id INTEGER PRIMARY KEY  NOT NULL,
      user_id INTEGER NOT NULL,
+     test_code VARCHAR(20)  NOT NULL,
      is_urgent BOOLEAN DEFAULT false,
      description    TEXT  NOT NULL,
      test_result text NOT NULL,

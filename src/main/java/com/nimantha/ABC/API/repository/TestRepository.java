@@ -19,5 +19,4 @@ public interface TestRepository {
 
     void remove(Integer testId, Integer userId) throws BadRequestException;
 
-//    Integer create(Integer userId, Boolean isUrgent, String description, String testResult, Boolean isProgress, Boolean isFinished);
 }
